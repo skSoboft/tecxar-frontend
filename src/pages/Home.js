@@ -20,18 +20,17 @@ const Home = () => {
   });
 
   useEffect(() => {
-    // Function to fetch data from the API
     const fetchProducts = async () => {
       try {
-        const data = await get("/products"); // Use the 'get' function from api.js
-        setProducts(data); // Update the state with the fetched data
+        const data = await get("/products");  
+        setProducts(data); 
       } catch (error) {
         console.error("Error fetching products:", error);
       }
     };
 
     fetchProducts();
-  }, []); // The empty dependency array ensures that this effect runs only once when the component mounts
+  }, []); 
 
   const handleShowModal = () => {
     setShowModal(true);
@@ -42,10 +41,9 @@ const Home = () => {
   };
 
   const handleAddProduct = () => {
-    // You can implement the logic for adding a product here
-    // This is a placeholder and does not perform actual API calls
+    
     const newProduct = {
-      id: Date.now(), // Example: You can generate a unique ID
+      id: Date.now(), 
       name: formData.productName,
       price: formData.productPrice,
       image: formData.productImage,
@@ -56,7 +54,6 @@ const Home = () => {
   };
 
   const handleImageChange = (e) => {
-    // Handle product image change and set it in formData
     const file = e.target.files[0];
     setFormData({ ...formData, productImage: URL.createObjectURL(file) });
   };
